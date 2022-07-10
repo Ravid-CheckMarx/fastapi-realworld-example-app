@@ -1,0 +1,9 @@
+OPTION1:
+Prequisits:
+1. Create more then 20 articles (because the limit the app is showing is 20 bt defualt)
+
+Plan:
+1. User perform GET all articles and see 20 articles but also "article_count" = 30
+2. He can use ?limit=100000 (causing performance issues on the database)
+3. all the articles will show up
+4. If limit > 100,000, retun flag in the response

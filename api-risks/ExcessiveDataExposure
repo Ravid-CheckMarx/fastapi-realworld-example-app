@@ -1,0 +1,18 @@
+prequisits:
+- Add article
+- Add "credit_card" field with a certain value to the "author" section in both get articles and get all comments for article endpoints
+- Add "credit_card: "null" in the response of register, login and update user)
+
+Plan:
+OPTION1:
+1. In the get all articles endpoint (GET /articles) the response will include credit card numner as a field in the "author" section 
+("credit card": "111122223333444")
+2. The user will update his info (PUT /user) with this credit card number 
+3. If credit card value == 111122223333444 The user will get the flag
+
+OPTION2:
+1. In the get all comments for article endpoint (GET /articles/{artcile_name}/comments) the response will include credit card numner 
+as a field in the "author" section
+("credit card": "111122223333444")
+2. The user will update his info (PUT /user) with this credit card number
+3. If credit card value == 111122223333444 The user will get the flag

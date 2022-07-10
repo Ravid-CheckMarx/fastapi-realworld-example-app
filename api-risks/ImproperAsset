@@ -1,0 +1,12 @@
+prequisists:
+ - Create 2 new endpoints /users/login/dev & /users/login/v1 which are the "old" login endpoint of the app
+ - The response for these endpoints will include the flag for this challange as a new  field
+
+Plan:
+1. User will have to guess that there is a "dev" or "old" version of the app and try to enumarte different endpoint of the app
+till he finds the login endpoint
+2. The user will authnticate with his creds, and for his surprise will get the flag in the response
+
+
+---An hint for the endpoints can be achived after completing one of the other challanges--- (the domains will be in the csv file)
+

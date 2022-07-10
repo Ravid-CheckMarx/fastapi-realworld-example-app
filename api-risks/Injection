@@ -1,0 +1,10 @@
+prequisits:
+ - Allow SQL injection in the get all users, get all articles, delete articles endpoints
+ - Create a user with username: flagy-flagand the  email of the flag value
+ - Create a article with the name of "flaggy" and the content of the flag value 
+
+Plan:
+OPTION1: SQL injection to retirve all users from the DB and get the flag
+OPTION2: SQL injection to retirve all articles from the DB and get the flag
+
+

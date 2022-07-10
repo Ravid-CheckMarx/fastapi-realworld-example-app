@@ -1,0 +1,15 @@
+Preqizities:
+Create few users (admin/password, bob/marly, etc)
+OPTION1:
+Modify the response of login endpoint to indicate username or password wrong (seperatly), right now: "incorrect email or password"
+Plan:
+1. User guess the correct username (indication of just "wrong password")
+1. Perform ATO using POSTMAN/BURP to the login endpoint (POST /users/login) with password list (need to attach to project)
+2. When finding certain user (admin/password) get the flag 
+
+OPTION2:
+1. Use cred.txt (user name + passwords)
+2. 1. Perform ATO using POSTMAN/BURP to the login endpoint (POST /users/login) with this list
+3. Get valid credentials
+4. Login/Get data of the user and get the flag (if user == user from the list -> return the flag in the response)
+

@@ -1,0 +1,7 @@
+Prequizits:
+1. Create a new endpoint that only admins can access ("admin") which will not be part of the spesification
+2. This page will contain info about all users along with a flag
+
+Plan:
+User will have to guess that /admin exits
+He will be able to reach this endpoint without verying that he is not an admin 
