@@ -12,7 +12,7 @@ Prequisits:
 
 Plan:
 OPTION 1:
- Update user B (id of user B) email -> update user endpoint (PUT /user) - We will need to change the code so it will not verify the user trying to make the update
+Update user B (id of user B) email -> update user endpoint (PUT /user) - We will need to change the code so it will not verify the user trying to make the update
 (in case you are authnticated you should be able to update any user details)
 get the flag:
 if the id of the authnticated user != the id he is trying to change -> get flag

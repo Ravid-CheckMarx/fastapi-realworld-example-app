@@ -1,5 +1,6 @@
 Preqizities:
 Create few users (admin/password, bob/marly, etc)
+
 OPTION1:
 Modify the response of login endpoint to indicate username or password wrong (seperatly), right now: "incorrect email or password"
 Plan:
@@ -13,3 +14,4 @@ OPTION2:
 3. Get valid credentials
 4. Login/Get data of the user and get the flag (if user == user from the list -> return the flag in the response)
 
+### The user name can be retirived from an article

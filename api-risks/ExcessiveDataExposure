@@ -16,3 +16,5 @@ as a field in the "author" section
 ("credit card": "111122223333444")
 2. The user will update his info (PUT /user) with this credit card number
 3. If credit card value == 111122223333444 The user will get the flag
+
+### Add an purchase endpoint to validate the stolen credit card and get the flag
