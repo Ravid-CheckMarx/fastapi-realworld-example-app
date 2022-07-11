@@ -1,10 +1,14 @@
-prequisits:
- - Allow SQL injection in the get all users, get all articles, delete articles endpoints
- - Create a user with username: flagy-flagand the  email of the flag value
- - Create a article with the name of "flaggy" and the content of the flag value 
+Link to the vulnerabillity:
+https://github.com/OWASP/API-Security/blob/master/2019/en/src/0xa8-injection.md
+
+SQL Injection:
+Prequisits:
+ - Allow SQL injection in the GET /user
+ - Create a user with username: flag and password: flag value in the DB
 
 Plan:
-OPTION1: SQL injection to retirve all users from the DB and get the flag
-OPTION2: SQL injection to retirve all articles from the DB and get the flag
+SQL injection to retirve all users (GET /user) from the DB and get the flag
 
+Command injection:
+--Need to think--
 

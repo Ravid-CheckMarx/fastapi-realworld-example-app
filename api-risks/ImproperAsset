@@ -1,12 +1,16 @@
-prequisists:
- - Create 2 new endpoints /users/login/dev & /users/login/v1 which are the "old" login endpoint of the app
- - The response for these endpoints will include the flag for this challange as a new  field
+Link to the vulnerabillity:
+https://github.com/OWASP/API-Security/blob/master/2019/en/src/0xa9-improper-assets-management.md
+
+Prequisists:
+ - Create 2 new endpoints "/users/login/dev" & "/users/login/v1" which are the "old" login endpoint of the app
+   These endpoints should not be part of the API spesification (hidden)
+ - These endpoint should have the login implementation just like the regular login process
+ - Response for these endpoints will include the flag for this challange as a new  field
 
 Plan:
-1. User will have to guess that there is a "dev" or "old" version of the app and try to enumarte different endpoint of the app
-till he finds the login endpoint
-2. The user will authnticate with his creds, and for his surprise will get the flag in the response
-
-
----An hint for the endpoints can be achived after completing one of the other challanges--- (the domains will be in the csv file)
+1. User will have to enumarate different endpoints till he finds "dev" or "v1" version of the app and try to
+enumarate different endpoint of the app till he finds the login endpoint (for hint we can create a list of possible
+popular endpoints to enumarte with Burp)
+2. The user will authnticate to the old login endpoint with his creds,
+and for his surprise will get the flag in the response
 

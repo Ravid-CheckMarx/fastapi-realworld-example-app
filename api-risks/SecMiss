@@ -1,26 +1,14 @@
-prequisits:
- - Create a new celeb user: celeb_1
- - Create a new endpoint for the this celeb, "my personal details" which will include personal details (PII, id, flag)
- - Add a new field to the respone of (POST /profiles/{celebnam}e/follow) - "my page": "linktopage"
- - Redircet the request to the new endpoint
+Link to the vulnerabillity:
+https://github.com/OWASP/API-Security/blob/master/2019/en/src/0xa7-security-misconfiguration.md
+
+Prequisits:
+ - Create a docker image of Redis and add it to the docker compose
+ - Add a flag to the DB
 
 Plan:
-1. User will send a request to follow celeb_1 (he will have to guess the existance of this celeb)
-2. In the response he will get a new field - "my page": "linktopage" which will lead to the page of this celeb
-3. The flag will be part of the data in this page
+1. The user will have to find out there is a Redis DB up and running
+2. He will need to connect to the DB
+3. He will need to query the DB and find the flag
 
-Alternative: we can create the data file in a open to the world S3 bucket which is hosted in our domain
-The link to this S3 bucket will be set as the value of "mypage"
-
-
-OPTION2:
-prequisits:
- - Create a new comment for an existing article
- - The body will include a link to S3 bucket/new endpoint which will include a csv file with endpoints that the DevOps created
-   for debugging perphases and should not be open to the world
-   Exmaple: "/admin", "/debug", "/dev", "/prod" with the flag for this risk
-
-Plan:
-1. User will have to enumarte articles and check for its comments
-2. One of the articles will contain the comment with the link to the CSV file
-3. The user will get the flag from this CSV, along with an hint for "admin" endpoint which he can use for other challnage 
+### Redis DB (docker image) which will contain the flag, the user will have to login the Redis
+### The missconfiguration here is that the DB is open for outside connections
