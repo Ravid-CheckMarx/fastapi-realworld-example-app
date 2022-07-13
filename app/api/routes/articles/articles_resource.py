@@ -110,7 +110,6 @@ async def update_article_by_slug(
     "/{slug}",
     status_code=status.HTTP_204_NO_CONTENT,
     name="articles:delete-article",
-    dependencies=[Depends(check_article_modification_permissions)],
     response_class=Response,
 )
 async def delete_article_by_slug(
