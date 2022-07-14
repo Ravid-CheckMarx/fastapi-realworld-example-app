@@ -201,7 +201,7 @@ class ArticlesRepository(BaseRepository):  # noqa: WPS214
         query_params.extend([limit, offset])
 
         if limit >= 100000:
-            return [Article(**{"slug": "DoS", "title": "flag{I_sHu5d0wN_tH3_mAch1nE}", "description": "DoS", "body": "DoS", "tags": ["DoS"], "author": Profile(**{"username": "DoS"}), "favorited": True, "favorites_count": 0})]
+            return [Article(**{"slug": "DoS", "title": "flag{5HuTd0wN_tH3_mAch1nE}", "description": "DoS", "body": "DoS", "tags": ["DoS"], "author": Profile(**{"username": "DoS"}), "favorited": True, "favorites_count": 0})]
 
         articles_rows = await self.connection.fetch(query.get_sql(), *query_params)
 
