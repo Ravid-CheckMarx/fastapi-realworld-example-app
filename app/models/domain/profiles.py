@@ -4,7 +4,7 @@ from app.models.domain.rwmodel import RWModel
 
 
 class Profile(RWModel):
-    admin: bool
+    admin: bool = False
     username: str
     bio: str = ""
     image: Optional[str] = None
