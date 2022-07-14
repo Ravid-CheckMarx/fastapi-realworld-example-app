@@ -49,6 +49,7 @@ async def login(
             bio=user.bio,
             image=user.image,
             token=token,
+            admin=user.admin
         ),
     )
 
