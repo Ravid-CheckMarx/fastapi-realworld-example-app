@@ -23,3 +23,7 @@ ARTICLE_IS_NOT_FAVORITED = "article is not favorited"
 COMMENT_DOES_NOT_EXIST = "comment does not exist"
 
 AUTHENTICATION_REQUIRED = "authentication required"
+
+### Flags
+
+BrokenFunctionLevelAuthorization = "flag{I_aM_Th3_aDm1n_H3r3!}"
