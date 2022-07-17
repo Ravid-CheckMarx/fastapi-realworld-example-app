@@ -27,3 +27,4 @@ AUTHENTICATION_REQUIRED = "authentication required"
 ### Flags
 
 BrokenFunctionLevelAuthorization = "flag{I_aM_Th3_aDm1n_H3r3!}"
+BrokenUserAuthentication = "flag{F33l_My_V01t_Tack13!}"

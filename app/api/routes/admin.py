@@ -14,7 +14,7 @@ from app.services.authentication import check_email_is_taken, check_username_is_
 
 router = APIRouter()
 
-@router.get("", response_model=UserInResponse, name="admin:get-admin-page")
+@router.get("", response_model=UserInResponse, name="admin:get-admin-page", include_in_schema=False)
 async def retrieve_admin_page(
     user: User = Depends(get_current_user_authorizer()),
     settings: AppSettings = Depends(get_app_settings),
