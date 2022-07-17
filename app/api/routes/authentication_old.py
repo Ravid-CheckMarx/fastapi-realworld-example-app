@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Body, Depends, HTTPException
 from starlette.status import HTTP_400_BAD_REQUEST
 
+from app.resources.strings import ImproperAssetsManagement
 from app.api.dependencies.database import get_repository
 from app.core.config import get_app_settings
 from app.core.settings.app import AppSettings
@@ -41,7 +42,7 @@ async def login(
         user=UserWithToken(
             username=user.username,
             email=user.email,
-            bio="CTF{Impr0peR_Ass3ts_ManAg3m3nt}",
+            bio=ImproperAssetsManagement,
             image=user.image,
             token=token,
         ),

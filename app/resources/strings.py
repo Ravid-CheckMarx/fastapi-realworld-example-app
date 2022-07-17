@@ -23,3 +23,5 @@ ARTICLE_IS_NOT_FAVORITED = "article is not favorited"
 COMMENT_DOES_NOT_EXIST = "comment does not exist"
 
 AUTHENTICATION_REQUIRED = "authentication required"
+
+ImproperAssetsManagement = "flag{Impr0peR_Ass3ts_ManAg3m3nt}"
