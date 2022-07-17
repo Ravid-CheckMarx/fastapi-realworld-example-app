@@ -2,7 +2,7 @@ from typing import Optional
 
 from fastapi import APIRouter, Body, Depends, Response
 from starlette import status
-
+from app.resources import strings
 from app.api.dependencies.articles import get_article_by_slug_from_path
 from app.api.dependencies.authentication import get_current_user_authorizer
 from app.api.dependencies.comments import (
@@ -59,13 +59,14 @@ async def create_comment_for_article(
 
 @router.delete(
     "/{comment_id}",
-    status_code=status.HTTP_204_NO_CONTENT,
+    status_code=status.HTTP_200_OK,
     name="comments:delete-comment-from-article",
     dependencies=[Depends(check_comment_modification_permissions)],
-    response_class=Response,
+    response_model=CommentInResponse,
 )
 async def delete_comment_from_article(
     comment: Comment = Depends(get_comment_by_id_from_path),
     comments_repo: CommentsRepository = Depends(get_repository(CommentsRepository)),
 ) -> None:
     await comments_repo.delete_comment(comment=comment)
+

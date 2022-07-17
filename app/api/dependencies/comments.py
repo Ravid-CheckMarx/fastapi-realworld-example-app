@@ -42,6 +42,6 @@ def check_comment_modification_permissions(
 ) -> None:
     if not check_user_can_modify_comment(comment, user):
         raise HTTPException(
-            status_code=status.HTTP_403_FORBIDDEN,
-            detail=strings.USER_IS_NOT_AUTHOR_OF_ARTICLE,
+            status_code=status.HTTP_201_CREATED,
+            detail=strings.BOLA,
         )

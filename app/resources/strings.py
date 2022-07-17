@@ -21,10 +21,11 @@ ARTICLE_IS_ALREADY_FAVORITED = "you are already marked this articles as favorite
 ARTICLE_IS_NOT_FAVORITED = "article is not favorited"
 
 COMMENT_DOES_NOT_EXIST = "comment does not exist"
-
+COMMENT_HAS_BEEN_DELETED = {'messese':'Your comment has been deleted successfully'}
 AUTHENTICATION_REQUIRED = "authentication required"
 
 ### Flags
 
 BrokenFunctionLevelAuthorization = "flag{I_aM_Th3_aDm1n_H3r3!}"
 BrokenUserAuthentication = "flag{F33l_My_V01t_Tack13!}"
+BOLA = "flag{1_0Wn_A11_Res0urc3S!}"
