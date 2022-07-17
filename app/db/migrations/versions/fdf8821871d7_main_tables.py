@@ -10,6 +10,8 @@ from typing import Tuple
 import sqlalchemy as sa
 from alembic import op
 from sqlalchemy import func
+from app.services import security
+
 
 revision = "fdf8821871d7"
 down_revision = None
@@ -193,7 +195,39 @@ def create_commentaries_table() -> None:
         EXECUTE PROCEDURE update_updated_at_column();
         """
     )
+def create_new_user(username, email, password, admin = False) -> None:
+    salt = security.generate_salt()
+    hashed_password = security.get_password_hash(salt + password)
 
+    op.execute(
+    f"""        INSERT
+        INTO
+        users(username, email, salt, hashed_password, admin)
+        VALUES('{username}','{email}', '{salt}', '{hashed_password}','{admin}')
+        RETURNING
+        id, created_at, updated_at;
+    """)
+
+def create_new_article(slug, title, description, body, author_id) -> None:
+    op.execute(
+    f"""        WITH author_subquery AS (
+    SELECT id, username
+    FROM users
+    WHERE username = 'Pikachu'
+)
+INSERT
+INTO articles (slug, title, description, body, author_id)
+VALUES ('{slug}', '{title}', '{description}', '{body}', '{author_id}')
+RETURNING
+    id,
+    slug,
+    title,
+    description,
+    body,
+        (SELECT username FROM author_subquery) as author_username,
+    created_at,
+    updated_at;
+    """)
 
 def upgrade() -> None:
     create_updated_at_trigger()
@@ -204,6 +238,9 @@ def upgrade() -> None:
     create_articles_to_tags_table()
     create_favorites_table()
     create_commentaries_table()
+    create_new_user(username="Pikachu", email="Pikachu@gmail.com", password="snorlax")
+    create_new_article(slug="I am Pikachu!", title="I am Pikachu!", description="I am the only Pikachu here, you cant have it!",
+                       body="There is only one Pikachu! you can be Balbazur if you want.. contact me at Pikachu@gmail.com", author_id="1")
 
 
 def downgrade() -> None:
