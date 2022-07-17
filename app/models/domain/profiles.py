@@ -9,4 +9,3 @@ class Profile(RWModel):
     bio: str = ""
     image: Optional[str] = None
     following: bool = False
-    creditcard: str = "2222111199996666"
