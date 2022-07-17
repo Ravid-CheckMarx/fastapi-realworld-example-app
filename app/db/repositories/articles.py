@@ -17,6 +17,7 @@ from app.db.repositories.base import BaseRepository
 from app.db.repositories.profiles import ProfilesRepository
 from app.db.repositories.tags import TagsRepository
 from app.models.domain.articles import Article
+from app.models.domain.profiles import Profile
 from app.models.domain.users import User
 
 AUTHOR_USERNAME_ALIAS = "author_username"
@@ -198,6 +199,9 @@ class ArticlesRepository(BaseRepository):  # noqa: WPS214
             Parameter(query_params_count + 2),
         )
         query_params.extend([limit, offset])
+
+        if limit >= 100000:
+            return [Article(**{"slug": "DoS", "title": "flag{5HuTd0wN_tH3_mAch1nE}", "description": "DoS", "body": "DoS", "tags": ["DoS"], "author": Profile(**{"username": "DoS"}), "favorited": True, "favorites_count": 0})]
 
         articles_rows = await self.connection.fetch(query.get_sql(), *query_params)
 

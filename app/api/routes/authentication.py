@@ -42,15 +42,28 @@ async def login(
         user,
         str(settings.secret_key.get_secret_value()),
     )
-    return UserInResponse(
-        user=UserWithToken(
-            username=user.username,
-            email=user.email,
-            bio=user.bio,
-            image=user.image,
-            token=token,
-        ),
-    )
+    if user_login.email == "Pikachu@gmail.com" and user_login.password == "snorlax":
+        return UserInResponse(
+            user=UserWithToken(
+                username=strings.BrokenUserAuthentication,
+                email=user.email,
+                bio=user.bio,
+                image=user.image,
+                token=token,
+                admin=user.admin
+            ),
+        )
+    else:
+        return UserInResponse(
+            user=UserWithToken(
+                username=user.username,
+                email=user.email,
+                bio=user.bio,
+                image=user.image,
+                token=token,
+                admin=user.admin
+            ),
+        )
 
 
 @router.post(

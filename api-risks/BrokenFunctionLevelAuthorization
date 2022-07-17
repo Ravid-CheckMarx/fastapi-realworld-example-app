@@ -11,3 +11,5 @@ using the hints "endpoints.txt")
 2. This endpoint will be open to the world and any user will be able to reach it -
 There wont be any verification that only admins can reach it
 3. The response will include all users details and the flag
+
+flag{I_aM_Th3_aDm1n_H3r3!}
