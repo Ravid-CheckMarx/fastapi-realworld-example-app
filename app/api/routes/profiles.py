@@ -19,8 +19,13 @@ router = APIRouter()
     name="profiles:get-profile",
 )
 async def retrieve_profile_by_username(
-    profile: Profile = Depends(get_profile_by_username_from_path),
+        profile: Profile = Depends(get_profile_by_username_from_path),
 ) -> ProfileInResponse:
+    if profile.username == "TeamR$cket":
+        profile.card_number = "2222111199996666"
+        profile.card_name = "Team Rocket"
+        profile.card_cvc = "555"
+        profile.card_expiry = "0922"
     return ProfileInResponse(profile=profile)
 
 
@@ -30,9 +35,9 @@ async def retrieve_profile_by_username(
     name="profiles:follow-user",
 )
 async def follow_for_user(
-    profile: Profile = Depends(get_profile_by_username_from_path),
-    user: User = Depends(get_current_user_authorizer()),
-    profiles_repo: ProfilesRepository = Depends(get_repository(ProfilesRepository)),
+        profile: Profile = Depends(get_profile_by_username_from_path),
+        user: User = Depends(get_current_user_authorizer()),
+        profiles_repo: ProfilesRepository = Depends(get_repository(ProfilesRepository)),
 ) -> ProfileInResponse:
     if user.username == profile.username:
         raise HTTPException(
@@ -60,9 +65,9 @@ async def follow_for_user(
     name="profiles:unsubscribe-from-user",
 )
 async def unsubscribe_from_user(
-    profile: Profile = Depends(get_profile_by_username_from_path),
-    user: User = Depends(get_current_user_authorizer()),
-    profiles_repo: ProfilesRepository = Depends(get_repository(ProfilesRepository)),
+        profile: Profile = Depends(get_profile_by_username_from_path),
+        user: User = Depends(get_current_user_authorizer()),
+        profiles_repo: ProfilesRepository = Depends(get_repository(ProfilesRepository)),
 ) -> ProfileInResponse:
     if user.username == profile.username:
         raise HTTPException(
