@@ -12,8 +12,6 @@ class User(RWModel):
     image: Optional[str] = None
     admin: bool = False
 
-class Comment(RWModel):
-    message: str
 
 
 class UserInDB(IDModelMixin, DateTimeModelMixin, User):
