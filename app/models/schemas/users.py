@@ -23,9 +23,15 @@ class UserInUpdate(BaseModel):
     image: Optional[HttpUrl] = None
     admin: Optional[bool] = None
 
+
 class UserWithToken(User):
     token: str
 
 
 class UserInResponse(RWSchema):
     user: UserWithToken
+
+
+class CTFResponse(UserInResponse):
+    flag: str
+    description: str

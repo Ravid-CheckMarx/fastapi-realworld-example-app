@@ -104,11 +104,12 @@
 							"raw": "{\"user\":{\"email\":\"{{EMAIL}}\", \"password\":\"{{PASSWORD}}\"}}"
 						},
 						"url": {
-							"raw": "{{APIURL}}/users/login",
+							"raw": "{{APIURL}}/v2/users/login",
 							"host": [
 								"{{APIURL}}"
 							],
 							"path": [
+								"v2",
 								"users",
 								"login"
 							]
@@ -164,11 +165,12 @@
 							"raw": "{\"user\":{\"email\":\"{{EMAIL}}\", \"password\":\"{{PASSWORD}}\"}}"
 						},
 						"url": {
-							"raw": "{{APIURL}}/users/login",
+							"raw": "{{APIURL}}/v2/users/login",
 							"host": [
 								"{{APIURL}}"
 							],
 							"path": [
+								"v2",
 								"users",
 								"login"
 							]
