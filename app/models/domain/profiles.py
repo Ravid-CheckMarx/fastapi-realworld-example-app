@@ -10,7 +10,6 @@ class Profile(RWModel):
     image: Optional[str] = None
     following: bool = False
     card_name: Optional[str]
-    card: Optional[str]
     card_number: Optional[str]
     card_cvc: Optional[str]
     card_expiry: Optional[str]
