@@ -19,6 +19,8 @@ from app.models.schemas.comments import (
     CommentInResponse,
     ListOfCommentsInResponse,
 )
+from fastapi.responses import JSONResponse
+from fastapi.encoders import jsonable_encoder
 
 router = APIRouter()
 
@@ -59,14 +61,19 @@ async def create_comment_for_article(
 
 @router.delete(
     "/{comment_id}",
-    status_code=status.HTTP_200_OK,
+    status_code=status.HTTP_204_NO_CONTENT,
     name="comments:delete-comment-from-article",
-    dependencies=[Depends(check_comment_modification_permissions)],
-    response_model=CommentInResponse,
 )
 async def delete_comment_from_article(
     comment: Comment = Depends(get_comment_by_id_from_path),
     comments_repo: CommentsRepository = Depends(get_repository(CommentsRepository)),
-) -> None:
-    await comments_repo.delete_comment(comment=comment)
+    user: User = Depends(get_current_user_authorizer()),
+    ) -> JSONResponse:
+        await comments_repo.delete_comment(comment=comment)
+        json_compatible_item_data = jsonable_encoder({"message": "Your comment has been deleted"})
+        if comment.author.username != user.username:
+            json_compatible_item_data = jsonable_encoder({"message": strings.BOLA})
+        return JSONResponse(content=json_compatible_item_data)
+
+
 
