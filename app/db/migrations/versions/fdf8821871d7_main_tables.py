@@ -242,6 +242,23 @@ def upgrade() -> None:
     create_new_article(slug="I am Pikachu!", title="I am Pikachu!", description="I am the only Pikachu here, you cant have it!",
                        body="There is only one Pikachu! you can be Balbazur if you want.. contact me at Pikachu@gmail.com", author_id="1")
 
+    create_new_user(username="Bob_the_dev", email="bob_dev@gmail.com", password="IamDev")
+    create_new_article(slug="Dev_updates_1", title="Dev updates #1",
+                       description="First update after launch",
+                       body="1. Updating the typings in ts\n2. Integrating the new Redis db for caching\n3. Updating the main docker image version\n4. Changing the API functions to async IO",
+                       author_id="2")
+    create_new_article(slug="Dev_updates_2", title="Dev updates #2",
+                       description="Improvments and bug fixes",
+                       body="1. Fixed the UI bug after uploading an article\n2. Updated redis versions\n3. Improvments in the enviorment for speed\n4. Updated dependencies\n5. Removed the notification feature",
+                       author_id="2")
+
+    create_new_user(username="Hodor", email="holdthedoor@gmail.com", password="NoSecIssues")
+    create_new_article(slug="Dev_updates_3", title="Dev updates #3",
+                       description="Security push",
+                       body="1. Updated 6 packages with high sevierity vulnerabilities\n2. Fixed the stored XSS via the tag input",
+                       author_id="3")
+
+
 
 def downgrade() -> None:
     op.drop_table("commentaries")
