@@ -24,6 +24,10 @@ from app.models.schemas.articles import (
 from app.resources import strings
 from app.services.articles import check_article_exists, get_slug_for_article
 
+from fastapi.responses import JSONResponse
+from fastapi.encoders import jsonable_encoder
+from app.models.domain.users import User
+
 router = APIRouter()
 
 
@@ -110,11 +114,14 @@ async def update_article_by_slug(
     "/{slug}",
     status_code=status.HTTP_204_NO_CONTENT,
     name="articles:delete-article",
-    dependencies=[Depends(check_article_modification_permissions)],
-    response_class=Response,
 )
 async def delete_article_by_slug(
     article: Article = Depends(get_article_by_slug_from_path),
     articles_repo: ArticlesRepository = Depends(get_repository(ArticlesRepository)),
-) -> None:
+    user: User = Depends(get_current_user_authorizer()),
+) -> JSONResponse:
     await articles_repo.delete_article(article=article)
+    json_compatible_item_data = jsonable_encoder({"message": "Your article has been deleted"})
+    if article.author.username != user.username:
+        json_compatible_item_data = jsonable_encoder({"message": strings.BOLA})
+    return JSONResponse(content=json_compatible_item_data)

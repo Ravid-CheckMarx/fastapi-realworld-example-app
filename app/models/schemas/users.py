@@ -35,3 +35,4 @@ class UserInResponse(RWSchema):
 class CTFResponse(UserInResponse):
     flag: str
     description: str
+

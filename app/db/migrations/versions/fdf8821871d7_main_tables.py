@@ -228,6 +228,14 @@ RETURNING
     created_at,
     updated_at;
     """)
+def create_new_comment(body, author_id, article_id) -> None:
+
+    op.execute(
+    f"""       
+INSERT
+INTO commentaries (body, author_id, article_id)
+VALUES ('{body}', '{author_id}', '{article_id}')
+    """)
 
 def upgrade() -> None:
     create_updated_at_trigger()
@@ -239,9 +247,6 @@ def upgrade() -> None:
     create_favorites_table()
     create_commentaries_table()
     create_new_user(username="Pikachu", email="Pikachu@gmail.com", password="snorlax")
-    create_new_article(slug="I am Pikachu!", title="I am Pikachu!", description="I am the only Pikachu here, you cant have it!",
-                       body="There is only one Pikachu! you can be Balbazur if you want.. contact me at Pikachu@gmail.com", author_id="1")
-
     create_new_user(username="Bob_the_dev", email="bob_dev@gmail.com", password="IamDev")
     create_new_article(slug="Dev_updates_1", title="Dev updates #1",
                        description="First update after launch",
@@ -257,7 +262,26 @@ def upgrade() -> None:
                        description="Security push",
                        body="1. Updated 6 packages with high sevierity vulnerabilities\n2. Fixed the stored XSS via the tag input",
                        author_id="3")
+    create_new_article(slug="I am Pikachu!", title="I am Pikachu!", description="I am the only Pikachu here, you cant have it!",
+                       body="There is only one Pikachu! you can be Balbazur if you want.. contact me at Pikachu@gmail.com", author_id="1")
+    create_new_user(username="Ash Ketchum", email="Ash Ketchum@gmail.com", password="Gotta Catch ’Em All")
+    create_new_user(username="Blastoise", email="Blastoise@gmail.com", password="powerfulwater")
+    create_new_user(username="Dragonite", email="Dragonite@gmail.com", password="firebomb")
+    create_new_user(username="Gengar", email="Gengar@gmail.com", password="ghostly")
+    create_new_article(slug="Gotta Catch ’Em All!", title="Gotta Catch ’Em All!",
+                       description="My Pokemon Team is faster than light. Surrender now or you’re in for a fight!",
+                       body="Maybe you think I’m a little too brash. But the Master is here! And my name is Ash",
+                       author_id="4")
+    create_new_article(slug="THIS IS MY AWESOME POST!", title="THIS IS MY AWESOME POST!",
+                       description="Whoever comment first will get 1,000,000$ from Pikachu!",
+                       body="Cmon! Lets see who will be first to comment!",
+                       author_id="5")
+    create_new_comment(body="Im the first! Im the first!", author_id="3", article_id="6")
+    create_new_comment(body="Oh no.. I never have luck with that, I wish I could be the first comment", author_id="4", article_id="6")
 
+    create_new_user(username="TeamR$cket", email="TeamR$cket@gmail.com", password="iamsorich")
+    create_new_article(slug="TeamR$cket", title="TeamR$cket", description="Money Money",
+                       body="We have so much money, we will win everyone!", author_id="8")
 
 
 def downgrade() -> None:
