@@ -32,9 +32,7 @@ class UserInResponse(RWSchema):
     user: UserWithToken
 
 
-<<<<<<< HEAD
-=======
 class CTFResponse(UserInResponse):
     flag: str
     description: str
->>>>>>> dev
+
