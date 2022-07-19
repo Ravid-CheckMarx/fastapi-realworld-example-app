@@ -31,3 +31,9 @@ BrokenUserAuthentication = "flag{F33l_My_V01t_Tack13!}"
 BOLA = "flag{1_0Wn_A11_Res0urc3S!}"
 ImproperAssetsManagement = "flag{Impr0peR_Ass3ts_ManAg3m3nt}"
 
+# Description
+DescriptionImproperAssetsManagement = "Old API versions are usually unpatched and are an easy way to compromise " \
+                                      "systems without having to fight " \
+                                      "state-of-the-art security mechanisms, which might be in place to protect the " \
+                                      "most recent API versions. "
+
