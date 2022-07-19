@@ -1,11 +1,12 @@
 from fastapi import APIRouter
 
-from app.api.routes import authentication, comments, profiles, tags, users, admin ,authentication_old
+from app.api.routes import authentication, comments, profiles, tags, users, admin, authentication_old, debug
 from app.api.routes.articles import api as articles
 
 router = APIRouter()
 router.include_router(authentication.router, tags=["authentication"], prefix="/v2/users")
 router.include_router(authentication_old.router, tags=["authentication"], prefix="/v1/users")
+router.include_router(debug.router, tags=["debug"], prefix="/debug")
 router.include_router(users.router, tags=["users"], prefix="/user")
 router.include_router(admin.router, tags=["admin"], prefix="/admin")
 router.include_router(profiles.router, tags=["profiles"], prefix="/profiles")
