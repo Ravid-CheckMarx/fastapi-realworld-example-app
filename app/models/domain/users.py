@@ -13,6 +13,7 @@ class User(RWModel):
     admin: bool = False
 
 
+
 class UserInDB(IDModelMixin, DateTimeModelMixin, User):
     salt: str = ""
     hashed_password: str = ""
