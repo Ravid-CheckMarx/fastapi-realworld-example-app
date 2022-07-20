@@ -20,9 +20,10 @@ router = APIRouter()
 )
 async def retrieve_profile_by_username(
         profile: Profile = Depends(get_profile_by_username_from_path),
+        user: User = Depends(get_current_user_authorizer()),
 ) -> ProfileInResponse:
     if profile.username == "TeamR$cket":
-        profile.card_number = "2222111199996666"
+        profile.card_number = "4426111122223333"
         profile.card_name = "Team Rocket"
         profile.card_cvc = "555"
         profile.card_expiry = "0922"
