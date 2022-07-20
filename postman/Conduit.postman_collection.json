@@ -2197,6 +2197,45 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Membership",
+			"item": [
+				{
+					"name": "Purchase",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Requested-With",
+								"value": "XMLHttpRequest"
+							},
+														{
+								"key": "Authorization",
+								"value": "Token {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"number\":\"{{CARD_NUMBER}}\", \"name\":\"{{CARD_NAME}}\", \"expiry\":\"{{EXPIRY}}\",\"cvc\":\"{{CVC}}\"}"
+						},
+						"url": {
+							"raw": "{{APIURL}}/membership",
+							"host": [
+								"{{APIURL}}"
+							],
+							"path": [
+								"membership"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
