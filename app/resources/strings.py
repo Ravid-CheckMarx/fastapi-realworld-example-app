@@ -31,15 +31,24 @@ BrokenUserAuthentication = "flag{F33l_My_V01t_Tack13!}"
 BOLA = "flag{1_0Wn_A11_Res0urc3S!}"
 ImproperAssetsManagement = "flag{Impr0peR_Ass3ts_ManAg3m3nt}"
 Injection = "flag{1nject10n_Ap1}"
+ExcessiveDataExposure = "flag{3xc3ss1v3_daTa_Xp0sur3}"
+
 # Description
 DescriptionImproperAssetsManagement = "Old API versions are usually unpatched and are an easy way to compromise " \
                                       "systems without having to fight " \
                                       "state-of-the-art security mechanisms, which might be in place to protect the " \
                                       "most recent API versions. "
 DescriptionInjection = "Attackers will feed the API with " \
-                       "malicious data through whatever" \
-                       "injection vectors are available" \
-                       "(e.g., direct input, parameters," \
-                       "integrated services, etc.)," \
-                       "expecting it to be sent to an" \
+                       "malicious data through whatever " \
+                       "injection vectors are available " \
+                       "(e.g., direct input, parameters, " \
+                       "integrated services, etc.), " \
+                       "expecting it to be sent to an " \
                        "interpreter"
+DescriptionExcessiveDataExposure = "Exploitation of Excessive Data " \
+                        "Exposure is simple, and is usually " \
+                        "performed by sniffing the traffic " \
+                        "to analyze the API responses, " \
+                        "looking for sensitive data " \
+                        "exposure that should not be " \
+                        "returned to the user."
