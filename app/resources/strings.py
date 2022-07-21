@@ -46,9 +46,13 @@ DescriptionInjection = "Attackers will feed the API with " \
                        "expecting it to be sent to an " \
                        "interpreter"
 DescriptionExcessiveDataExposure = "Exploitation of Excessive Data " \
-                        "Exposure is simple, and is usually " \
-                        "performed by sniffing the traffic " \
-                        "to analyze the API responses, " \
-                        "looking for sensitive data " \
-                        "exposure that should not be " \
-                        "returned to the user."
+                                   "Exposure is simple, and is usually " \
+                                   "performed by sniffing the traffic " \
+                                   "to analyze the API responses, " \
+                                   "looking for sensitive data " \
+                                   "exposure that should not be " \
+                                   "returned to the user."
+DescriptionBOLA = "APIs tend to expose endpoints that handle object identifiers, " \
+                  "creating a wide attack surface Level Access Control issue. Object " \
+                  "level authorization checks should be considered in every function " \
+                  "that accesses a data source using an input from the user."
