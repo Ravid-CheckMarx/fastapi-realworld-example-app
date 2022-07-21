@@ -33,9 +33,9 @@ router = APIRouter()
 
 @router.get("", response_model=ListOfArticlesInResponse, name="articles:list-articles")
 async def list_articles(
-    articles_filters: ArticlesFilters = Depends(get_articles_filters),
-    user: Optional[User] = Depends(get_current_user_authorizer(required=False)),
-    articles_repo: ArticlesRepository = Depends(get_repository(ArticlesRepository)),
+        articles_filters: ArticlesFilters = Depends(get_articles_filters),
+        user: Optional[User] = Depends(get_current_user_authorizer(required=False)),
+        articles_repo: ArticlesRepository = Depends(get_repository(ArticlesRepository)),
 ) -> ListOfArticlesInResponse:
     articles = await articles_repo.filter_articles(
         tag=articles_filters.tag,
@@ -61,9 +61,9 @@ async def list_articles(
     name="articles:create-article",
 )
 async def create_new_article(
-    article_create: ArticleInCreate = Body(..., embed=True, alias="article"),
-    user: User = Depends(get_current_user_authorizer()),
-    articles_repo: ArticlesRepository = Depends(get_repository(ArticlesRepository)),
+        article_create: ArticleInCreate = Body(..., embed=True, alias="article"),
+        user: User = Depends(get_current_user_authorizer()),
+        articles_repo: ArticlesRepository = Depends(get_repository(ArticlesRepository)),
 ) -> ArticleInResponse:
     slug = get_slug_for_article(article_create.title)
     if await check_article_exists(articles_repo, slug):
@@ -85,7 +85,7 @@ async def create_new_article(
 
 @router.get("/{slug}", response_model=ArticleInResponse, name="articles:get-article")
 async def retrieve_article_by_slug(
-    article: Article = Depends(get_article_by_slug_from_path),
+        article: Article = Depends(get_article_by_slug_from_path),
 ) -> ArticleInResponse:
     return ArticleInResponse(article=ArticleForResponse.from_orm(article))
 
@@ -97,9 +97,9 @@ async def retrieve_article_by_slug(
     dependencies=[Depends(check_article_modification_permissions)],
 )
 async def update_article_by_slug(
-    article_update: ArticleInUpdate = Body(..., embed=True, alias="article"),
-    current_article: Article = Depends(get_article_by_slug_from_path),
-    articles_repo: ArticlesRepository = Depends(get_repository(ArticlesRepository)),
+        article_update: ArticleInUpdate = Body(..., embed=True, alias="article"),
+        current_article: Article = Depends(get_article_by_slug_from_path),
+        articles_repo: ArticlesRepository = Depends(get_repository(ArticlesRepository)),
 ) -> ArticleInResponse:
     slug = get_slug_for_article(article_update.title) if article_update.title else None
     article = await articles_repo.update_article(
@@ -116,12 +116,12 @@ async def update_article_by_slug(
     name="articles:delete-article",
 )
 async def delete_article_by_slug(
-    article: Article = Depends(get_article_by_slug_from_path),
-    articles_repo: ArticlesRepository = Depends(get_repository(ArticlesRepository)),
-    user: User = Depends(get_current_user_authorizer()),
+        article: Article = Depends(get_article_by_slug_from_path),
+        articles_repo: ArticlesRepository = Depends(get_repository(ArticlesRepository)),
+        user: User = Depends(get_current_user_authorizer()),
 ) -> JSONResponse:
     await articles_repo.delete_article(article=article)
     json_compatible_item_data = jsonable_encoder({"message": "Your article has been deleted"})
     if article.author.username != user.username:
-        json_compatible_item_data = jsonable_encoder({"message": strings.BOLA})
+        json_compatible_item_data = jsonable_encoder({"message": strings.BOLA, "description": strings.DescriptionBOLA})
     return JSONResponse(content=json_compatible_item_data)
