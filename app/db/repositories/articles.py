@@ -19,6 +19,7 @@ from app.db.repositories.tags import TagsRepository
 from app.models.domain.articles import Article
 from app.models.domain.profiles import Profile
 from app.models.domain.users import User
+from app.resources.strings import LackOf, DescriptionLackOf
 
 AUTHOR_USERNAME_ALIAS = "author_username"
 SLUG_ALIAS = "slug"
@@ -201,7 +202,7 @@ class ArticlesRepository(BaseRepository):  # noqa: WPS214
         query_params.extend([limit, offset])
 
         if limit >= 100000:
-            return [Article(**{"slug": "DoS", "title": "flag{5HuTd0wN_tH3_mAch1nE}", "description": "DoS", "body": "DoS", "tags": ["DoS"], "author": Profile(**{"username": "DoS"}), "favorited": True, "favorites_count": 0})]
+            return [Article(**{"slug": "DoS", "title": LackOf, "description": DescriptionLackOf, "body": DescriptionLackOf, "tags": ["DoS"], "author": Profile(**{"username": "DoS"}), "favorited": True, "favorites_count": 0})]
 
         articles_rows = await self.connection.fetch(query.get_sql(), *query_params)
 

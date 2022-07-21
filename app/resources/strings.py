@@ -32,6 +32,7 @@ BOLA = "flag{1_0Wn_A11_Res0urc3S!}"
 ImproperAssetsManagement = "flag{Impr0peR_Ass3ts_ManAg3m3nt}"
 Injection = "flag{1nject10n_Ap1}"
 ExcessiveDataExposure = "flag{3xc3ss1v3_daTa_Xp0sur3}"
+LackOf = "flag{5HuTd0wN_tH3_mAch1nE}"
 
 # Description
 DescriptionImproperAssetsManagement = "Old API versions are usually unpatched and are an easy way to compromise " \
@@ -62,7 +63,12 @@ DescriptionBrokenFunctionLevelAuthorization = "Complex access control policies w
                                               "flaws. By exploiting these issues, attackers gain access to other " \
                                               "users’ resources and/or administrative functions."
 DescriptionBrokenUserAuthentication = "Authentication mechanisms are often implemented incorrectly, " \
-                           "allowing attackers to compromise authentication tokens or to " \
-                           "exploit implementation flaws to assume other user's identities " \
-                           "temporarily or permanently. Compromising system's ability to " \
-                           "identify the client/user, compromises API security overall."
+                                      "allowing attackers to compromise authentication tokens or to " \
+                                      "exploit implementation flaws to assume other user's identities " \
+                                      "temporarily or permanently. Compromising system's ability to " \
+                                      "identify the client/user, compromises API security overall."
+DescriptionLackOf = "Quite often, APIs do not impose any restrictions on the size or " \
+                    "number of resources that can be requested by the client/user. Not " \
+                    "only can this impact the API server performance, leading to " \
+                    "Denial of Service (DoS), but also leaves the door open to " \
+                    "authentication flaws such as brute force."
