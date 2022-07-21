@@ -26,7 +26,7 @@ AUTHENTICATION_REQUIRED = "authentication required"
 
 ### Flags
 
-BrokenFunctionLevelAuthorization = "flag{I_aM_Th3_aDm1n_H3r3!}"
+BrokenFunctionLevelAuthorization = "flag{BFL4_I_aM_Th3_aDm1n_H3r3!}"
 BrokenUserAuthentication = "flag{F33l_My_V01t_Tack13!}"
 BOLA = "flag{1_0Wn_A11_Res0urc3S!}"
 ImproperAssetsManagement = "flag{Impr0peR_Ass3ts_ManAg3m3nt}"
@@ -56,3 +56,8 @@ DescriptionBOLA = "APIs tend to expose endpoints that handle object identifiers,
                   "creating a wide attack surface Level Access Control issue. Object " \
                   "level authorization checks should be considered in every function " \
                   "that accesses a data source using an input from the user."
+DescriptionBrokenFunctionLevelAuthorization = "Complex access control policies with different hierarchies, " \
+                                              "groups, and roles, and an unclear separation between " \
+                                              "administrative and regular functions, tend to lead to authorization " \
+                                              "flaws. By exploiting these issues, attackers gain access to other " \
+                                              "users’ resources and/or administrative functions."
