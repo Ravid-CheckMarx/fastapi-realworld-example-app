@@ -36,3 +36,7 @@ class CTFResponse(UserInResponse):
     flag: str
     description: str
 
+
+class OnlyCTFResponse(BaseModel):
+    flag: str
+    description: str
