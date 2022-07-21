@@ -26,12 +26,14 @@ AUTHENTICATION_REQUIRED = "authentication required"
 
 ### Flags
 
-BrokenFunctionLevelAuthorization = "flag{I_aM_Th3_aDm1n_H3r3!}"
-BrokenUserAuthentication = "flag{F33l_My_V01t_Tack13!}"
+BrokenFunctionLevelAuthorization = "flag{BFL4_I_aM_Th3_aDm1n_H3r3!}"
+BrokenUserAuthentication = "flag{br0k3n_uS3r_4uthEnt1cAt1oN}"
 BOLA = "flag{B0lA!!!!!}"
 ImproperAssetsManagement = "flag{Impr0peR_Ass3ts_ManAg3m3nt}"
 Injection = "flag{1nject10n_Ap1}"
 ExcessiveDataExposure = "flag{3xc3ss1v3_daTa_Xp0sur3}"
+LackOf = "flag{L4cK_0f_R3s0urc3S_&_r4t3_L1m1t1ng}"
+MassAssignment = "flag{M4sS_AsS1gnm3nt}"
 
 # Description
 DescriptionImproperAssetsManagement = "Old API versions are usually unpatched and are an easy way to compromise " \
@@ -56,3 +58,24 @@ DescriptionBOLA = "APIs tend to expose endpoints that handle object identifiers,
                   "creating a wide attack surface Level Access Control issue. Object " \
                   "level authorization checks should be considered in every function " \
                   "that accesses a data source using an input from the user."
+DescriptionBrokenFunctionLevelAuthorization = "Complex access control policies with different hierarchies, " \
+                                              "groups, and roles, and an unclear separation between " \
+                                              "administrative and regular functions, tend to lead to authorization " \
+                                              "flaws. By exploiting these issues, attackers gain access to other " \
+                                              "users’ resources and/or administrative functions."
+DescriptionBrokenUserAuthentication = "Authentication mechanisms are often implemented incorrectly, " \
+                                      "allowing attackers to compromise authentication tokens or to " \
+                                      "exploit implementation flaws to assume other user's identities " \
+                                      "temporarily or permanently. Compromising system's ability to " \
+                                      "identify the client/user, compromises API security overall."
+DescriptionLackOf = "Quite often, APIs do not impose any restrictions on the size or " \
+                    "number of resources that can be requested by the client/user. Not " \
+                    "only can this impact the API server performance, leading to " \
+                    "Denial of Service (DoS), but also leaves the door open to " \
+                    "authentication flaws such as brute force."
+DescriptionMassAssignment = "Binding client provided data (e.g., JSON) to data models, without " \
+                            "proper properties filtering based on a whitelist, usually lead to " \
+                            "Mass Assignment. Either guessing objects properties, exploring " \
+                            "other API endpoints, reading the documentation, or providing " \
+                            "additional object properties in request payloads, allows attackers " \
+                            "to modify object properties they are not supposed to."
