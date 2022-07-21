@@ -27,7 +27,7 @@ AUTHENTICATION_REQUIRED = "authentication required"
 ### Flags
 
 BrokenFunctionLevelAuthorization = "flag{BFL4_I_aM_Th3_aDm1n_H3r3!}"
-BrokenUserAuthentication = "flag{F33l_My_V01t_Tack13!}"
+BrokenUserAuthentication = "flag{br0k3n_uS3r_4uthEnt1cAt1oN}"
 BOLA = "flag{1_0Wn_A11_Res0urc3S!}"
 ImproperAssetsManagement = "flag{Impr0peR_Ass3ts_ManAg3m3nt}"
 Injection = "flag{1nject10n_Ap1}"
@@ -61,3 +61,8 @@ DescriptionBrokenFunctionLevelAuthorization = "Complex access control policies w
                                               "administrative and regular functions, tend to lead to authorization " \
                                               "flaws. By exploiting these issues, attackers gain access to other " \
                                               "users’ resources and/or administrative functions."
+DescriptionBrokenUserAuthentication = "Authentication mechanisms are often implemented incorrectly, " \
+                           "allowing attackers to compromise authentication tokens or to " \
+                           "exploit implementation flaws to assume other user's identities " \
+                           "temporarily or permanently. Compromising system's ability to " \
+                           "identify the client/user, compromises API security overall."

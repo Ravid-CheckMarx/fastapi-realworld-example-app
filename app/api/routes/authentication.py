@@ -1,3 +1,5 @@
+from typing import Union
+
 from fastapi import APIRouter, Body, Depends, HTTPException
 from starlette.status import HTTP_201_CREATED, HTTP_400_BAD_REQUEST
 
@@ -9,7 +11,7 @@ from app.db.repositories.users import UsersRepository
 from app.models.schemas.users import (
     UserInLogin,
     UserInResponse,
-    UserWithToken,
+    UserWithToken, OnlyCTFResponse,
 )
 from app.resources import strings
 from app.services import jwt
@@ -17,12 +19,12 @@ from app.services import jwt
 router = APIRouter()
 
 
-@router.post("/login", response_model=UserInResponse, name="auth:login")
+@router.post("/login", response_model=Union[OnlyCTFResponse, UserInResponse], name="auth:login")
 async def login(
     user_login: UserInLogin = Body(..., embed=True, alias="user"),
     users_repo: UsersRepository = Depends(get_repository(UsersRepository)),
     settings: AppSettings = Depends(get_app_settings),
-) -> UserInResponse:
+) -> Union[OnlyCTFResponse, UserInResponse]:
     wrong_login_error = HTTPException(
         status_code=HTTP_400_BAD_REQUEST,
         detail=strings.INCORRECT_LOGIN_INPUT,
@@ -41,15 +43,9 @@ async def login(
         str(settings.secret_key.get_secret_value()),
     )
     if user_login.email == "Pikachu@gmail.com" and user_login.password == "snorlax":
-        return UserInResponse(
-            user=UserWithToken(
-                username=strings.BrokenUserAuthentication,
-                email=user.email,
-                bio=user.bio,
-                image=user.image,
-                token=token,
-                admin=user.admin
-            ),
+        return OnlyCTFResponse(
+            flag=strings.BrokenUserAuthentication,
+            description=strings.DescriptionBrokenUserAuthentication
         )
     else:
         return UserInResponse(
