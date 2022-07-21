@@ -33,7 +33,7 @@ ImproperAssetsManagement = "flag{Impr0peR_Ass3ts_ManAg3m3nt}"
 Injection = "flag{1nject10n_Ap1}"
 ExcessiveDataExposure = "flag{3xc3ss1v3_daTa_Xp0sur3}"
 LackOf = "flag{5HuTd0wN_tH3_mAch1nE}"
-MassAssignment = "flag{Y0u_aR3_7hE_4Uth0riZaTi0n}"
+MassAssignment = "flag{M4sS_AsS1gnm3nt}"
 
 # Description
 DescriptionImproperAssetsManagement = "Old API versions are usually unpatched and are an easy way to compromise " \
@@ -74,8 +74,8 @@ DescriptionLackOf = "Quite often, APIs do not impose any restrictions on the siz
                     "Denial of Service (DoS), but also leaves the door open to " \
                     "authentication flaws such as brute force."
 DescriptionMassAssignment = "Binding client provided data (e.g., JSON) to data models, without " \
-                 "proper properties filtering based on a whitelist, usually lead to " \
-                 "Mass Assignment. Either guessing objects properties, exploring " \
-                 "other API endpoints, reading the documentation, or providing " \
-                 "additional object properties in request payloads, allows attackers " \
-                 "to modify object properties they are not supposed to."
+                            "proper properties filtering based on a whitelist, usually lead to " \
+                            "Mass Assignment. Either guessing objects properties, exploring " \
+                            "other API endpoints, reading the documentation, or providing " \
+                            "additional object properties in request payloads, allows attackers " \
+                            "to modify object properties they are not supposed to."
