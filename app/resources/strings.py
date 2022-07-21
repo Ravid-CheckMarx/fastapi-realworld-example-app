@@ -28,7 +28,7 @@ AUTHENTICATION_REQUIRED = "authentication required"
 
 BrokenFunctionLevelAuthorization = "flag{BFL4_I_aM_Th3_aDm1n_H3r3!}"
 BrokenUserAuthentication = "flag{br0k3n_uS3r_4uthEnt1cAt1oN}"
-BOLA = "flag{1_0Wn_A11_Res0urc3S!}"
+BOLA = "flag{B0lA!!!!!}"
 ImproperAssetsManagement = "flag{Impr0peR_Ass3ts_ManAg3m3nt}"
 Injection = "flag{1nject10n_Ap1}"
 ExcessiveDataExposure = "flag{3xc3ss1v3_daTa_Xp0sur3}"
