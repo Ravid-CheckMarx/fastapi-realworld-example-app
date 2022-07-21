@@ -279,8 +279,18 @@ def upgrade() -> None:
                        body="1. Updated 6 packages with high sevierity vulnerabilities\n2. Fixed the stored XSS via the tag input",
                        author_id="3",
                        tags=["security", "dev", "updates"])
+    create_new_article(slug="Dev_updates_4", title="Dev updates #4",
+                       description="Un secured endpoints",
+                       body="Unfortunately, we didnt have time to fix all issues..\nThere are few endpoints which are open to the world while they should have been restricted\nIm afaraid that some of them might be very sensitive ones like devops or administrative endpoints",
+                       author_id="3",
+                       tags=["security", "dev", "updates"])
     create_new_article(slug="I am Pikachu!", title="I am Pikachu!", description="I am the only Pikachu here, you cant have it!",
                        body="There is only one Pikachu! you can be Balbazur if you want.. contact me at Pikachu@gmail.com", author_id="1",
+                       tags=["pokemon"])
+    create_new_article(slug="My favourite pokemons!", title="My favourites pokemons!",
+                       description="You will never guess what are my favourite pokemons!",
+                       body="charizard\ngengar\narcanine\nbulbasaur \ndragonite\nsnorlax\nninetals\nsquirtle",
+                       author_id="1",
                        tags=["pokemon"])
     create_new_user(username="Ash Ketchum", email="Ash Ketchum@gmail.com", password="Gotta Catch ’Em All", image="https://i.stack.imgur.com/3N48C.png?s=256&g=1")
     create_new_user(username="Blastoise", email="Blastoise@gmail.com", password="powerfulwater", image="https://www.serebii.net/dungeonrescueteamdx/pokemon/009.png")
