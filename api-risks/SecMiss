@@ -1,4 +1,4 @@
-Flag: flag{Y_i5_7hIs_0P3n}
+Flag: flag{5eC_M1sc0nF1g}
 
 Link to the vulnerabillity:
 https://github.com/OWASP/API-Security/blob/master/2019/en/src/0xa7-security-misconfiguration.md
@@ -13,4 +13,4 @@ Plan:
 3. He will need to query the DB and find the flag
 
 ### Redis DB (docker image) which will contain the flag, the user will have to login the Redis
-### The missconfiguration here is that the DB is open for outside connections
+### The misconfiguration here is that the DB is open for outside connections
