@@ -1,6 +1,10 @@
 FROM python:3.9.10-slim
 
 ENV PYTHONUNBUFFERED 1
+ENV DATABASE_URL=postgresql://postgres:postgres@db/postgres
+ENV APP_ENV=dev
+ENV SECRET_KEY=secret
+ENV DEBUG=True
 
 EXPOSE 8000
 WORKDIR /app

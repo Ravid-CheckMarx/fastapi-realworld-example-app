@@ -46,6 +46,7 @@ Then run the following commands to bootstrap your environment with ``poetry``: :
     poetry install
     poetry shell
 
+**This is out of use the env is now in the dockerfile**.
 Then create ``.env`` file (or rename and modify ``.env.example``) in project root and set environment variables for application: ::
 
     touch .env

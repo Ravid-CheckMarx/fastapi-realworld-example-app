@@ -6,10 +6,6 @@ services:
     restart: on-failure
     ports:
       - "8000:8000"
-    environment:
-      DATABASE_URL: "postgresql://postgres:postgres@db/postgres"
-    env_file:
-      - .env
     depends_on:
       - db
   db:
