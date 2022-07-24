@@ -45,7 +45,8 @@ async def login(
     if user_login.email == "Pikachu@gmail.com" and user_login.password == "snorlax":
         return OnlyCTFResponse(
             flag=strings.BrokenUserAuthentication,
-            description=strings.DescriptionBrokenUserAuthentication
+            description=strings.DescriptionBrokenUserAuthentication,
+            secret="This application is not logging and monitoring user's activities... You might wanna check the logging endpoint in the application.."
         )
     else:
         return UserInResponse(

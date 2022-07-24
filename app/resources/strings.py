@@ -34,7 +34,11 @@ Injection = "flag{1nject10n_Ap1}"
 ExcessiveDataExposure = "flag{3xc3ss1v3_daTa_Xp0sur3}"
 LackOf = "flag{L4cK_0f_R3s0urc3S_&_r4t3_L1m1t1ng}"
 MassAssignment = "flag{M4sS_AsS1gnm3nt}"
+
+InsufficientLogging = "flag{InsUfF1C3nT_L0gG1nG}"
+
 SecMiss = "flag{5eC_M1sc0nF1g}"
+
 
 # Description
 DescriptionImproperAssetsManagement = "Old API versions are usually unpatched and are an easy way to compromise " \
