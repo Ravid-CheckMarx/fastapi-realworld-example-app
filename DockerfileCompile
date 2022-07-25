@@ -1,0 +1,8 @@
+FROM ubuntu
+RUN apt update -y
+RUN apt install -y python python3-pip
+RUN pip install pyarmor
+RUN pip install uvicorn fastapi asyncpg loguru loguru aiosql bcrypt passlib pydantic[email] jwt pypika slugify pydantic[dotenv]
+ADD . /app
+WORKDIR /app
+RUN pyarmor init --entry=main.py && pyarmor config --manifest "global-include *.py, global-include *sql, include .env" && pyarmor build
