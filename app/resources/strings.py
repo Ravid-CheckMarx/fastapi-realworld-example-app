@@ -41,6 +41,10 @@ SecMiss = "flag{5eC_M1sc0nF1g}"
 
 
 # Description
+DescriptionInsufficientLogging = "Insufficient logging and monitoring, coupled with missing or ineffective integration with incident response, " \
+    "allows attackers to further attack systems, maintain persistence, pivot to more systems to tamper with, extract, or destroy data. " \
+    "Most breach studies demonstrate the time to detect a breach is over 200 days, " \
+    "typically detected by external parties rather than internal processes or monitoring."
 DescriptionImproperAssetsManagement = "Old API versions are usually unpatched and are an easy way to compromise " \
                                       "systems without having to fight " \
                                       "state-of-the-art security mechanisms, which might be in place to protect the " \

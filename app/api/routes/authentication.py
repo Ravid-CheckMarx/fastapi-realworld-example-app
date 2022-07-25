@@ -11,7 +11,7 @@ from app.db.repositories.users import UsersRepository
 from app.models.schemas.users import (
     UserInLogin,
     UserInResponse,
-    UserWithToken, OnlyCTFResponse,
+    UserWithToken, OnlyCTFResponse, OnlyCTFResponseWithSecret
 )
 from app.resources import strings
 from app.services import jwt
@@ -42,8 +42,8 @@ async def login(
         user,
         str(settings.secret_key.get_secret_value()),
     )
-    if user_login.email == "Pikachu@gmail.com" and user_login.password == "snorlax":
-        return OnlyCTFResponse(
+    if user_login.email == "Pikachu@checkmarx.com" and user_login.password == "snorlax":
+        return OnlyCTFResponseWithSecret(
             flag=strings.BrokenUserAuthentication,
             description=strings.DescriptionBrokenUserAuthentication,
             secret="This application is not logging and monitoring user's activities... You might wanna check the logging endpoint in the application.."
