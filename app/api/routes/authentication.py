@@ -42,7 +42,7 @@ async def login(
         user,
         str(settings.secret_key.get_secret_value()),
     )
-    if user_login.email == "Pikachu@gmail.com" and user_login.password == "snorlax":
+    if user_login.email == "Pikachu@checkmarx.com" and user_login.password == "snorlax":
         return OnlyCTFResponse(
             flag=strings.BrokenUserAuthentication,
             description=strings.DescriptionBrokenUserAuthentication,
