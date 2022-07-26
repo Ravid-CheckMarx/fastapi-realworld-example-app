@@ -12,6 +12,7 @@ services:
       DEBUG: "True"
     depends_on:
       - db
+
   db:
     image: postgres:11.5-alpine
     ports:

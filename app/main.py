@@ -1,3 +1,4 @@
+import uvicorn
 from fastapi import FastAPI
 from fastapi.exceptions import RequestValidationError
 from starlette.exceptions import HTTPException
@@ -42,4 +43,4 @@ def get_application() -> FastAPI:
     return application
 
 
-app = get_application()
+my_app = get_application()
