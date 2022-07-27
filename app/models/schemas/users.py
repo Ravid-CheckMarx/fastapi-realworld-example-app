@@ -40,3 +40,9 @@ class CTFResponse(UserInResponse):
 class OnlyCTFResponse(BaseModel):
     flag: str
     description: str
+
+
+class OnlyCTFResponseWithSecret(BaseModel):
+    flag: str
+    description: str
+    secret: str

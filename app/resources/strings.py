@@ -35,7 +35,16 @@ ExcessiveDataExposure = "flag{3xc3ss1v3_daTa_Xp0sur3}"
 LackOf = "flag{L4cK_0f_R3s0urc3S_&_r4t3_L1m1t1ng}"
 MassAssignment = "flag{M4sS_AsS1gnm3nt}"
 
+InsufficientLogging = "flag{InsUfF1C3nT_L0gG1nG}"
+
+SecMiss = "flag{5eC_M1sc0nF1g}"
+
+
 # Description
+DescriptionInsufficientLogging = "Insufficient logging and monitoring, coupled with missing or ineffective integration with incident response, " \
+    "allows attackers to further attack systems, maintain persistence, pivot to more systems to tamper with, extract, or destroy data. " \
+    "Most breach studies demonstrate the time to detect a breach is over 200 days, " \
+    "typically detected by external parties rather than internal processes or monitoring."
 DescriptionImproperAssetsManagement = "Old API versions are usually unpatched and are an easy way to compromise " \
                                       "systems without having to fight " \
                                       "state-of-the-art security mechanisms, which might be in place to protect the " \

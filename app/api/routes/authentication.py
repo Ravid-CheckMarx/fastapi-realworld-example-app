@@ -11,7 +11,7 @@ from app.db.repositories.users import UsersRepository
 from app.models.schemas.users import (
     UserInLogin,
     UserInResponse,
-    UserWithToken, OnlyCTFResponse,
+    UserWithToken, OnlyCTFResponse, OnlyCTFResponseWithSecret, CTFResponse
 )
 from app.resources import strings
 from app.services import jwt
@@ -19,12 +19,12 @@ from app.services import jwt
 router = APIRouter()
 
 
-@router.post("/login", response_model=Union[OnlyCTFResponse, UserInResponse], name="auth:login")
+@router.post("/login", response_model=Union[CTFResponse, UserInResponse] , name="auth:login")
 async def login(
     user_login: UserInLogin = Body(..., embed=True, alias="user"),
     users_repo: UsersRepository = Depends(get_repository(UsersRepository)),
     settings: AppSettings = Depends(get_app_settings),
-) -> Union[OnlyCTFResponse, UserInResponse]:
+) -> Union[CTFResponse, UserInResponse]:
     wrong_login_error = HTTPException(
         status_code=HTTP_400_BAD_REQUEST,
         detail=strings.INCORRECT_LOGIN_INPUT,
@@ -42,11 +42,19 @@ async def login(
         user,
         str(settings.secret_key.get_secret_value()),
     )
-    if user_login.email == "Pikachu@gmail.com" and user_login.password == "snorlax":
-        return OnlyCTFResponse(
-            flag=strings.BrokenUserAuthentication,
-            description=strings.DescriptionBrokenUserAuthentication
-        )
+    if user_login.email == "Pikachu@checkmarx.com" and user_login.password == "snorlax":
+        return CTFResponse(
+        flag=strings.BrokenUserAuthentication,
+        description=strings.DescriptionBrokenUserAuthentication,
+        user=UserWithToken(
+            username=user.username,
+            email=user.email,
+            image=user.image,
+            token=token,
+            bio="THIS IS A TOP SECRET: This application is not logging and monitoring user's activities... You might wanna check the logging endpoint in the application.."
+        ),
+    )
+
     else:
         return UserInResponse(
             user=UserWithToken(
@@ -58,4 +66,3 @@ async def login(
                 admin=user.admin
             ),
         )
-

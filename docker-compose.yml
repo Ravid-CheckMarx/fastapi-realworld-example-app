@@ -28,8 +28,12 @@ services:
   redis:
     image: appsecvillage22/ctf:redis
     ports:
+<<<<<<< HEAD
       - "6379:6379"
   frontend:
     image: appsecvillage22/ctf:frontend
     ports:
       - "4100:4100"
+=======
+      - "6379:6379"
+>>>>>>> dev
