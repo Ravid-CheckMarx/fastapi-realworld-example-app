@@ -2,10 +2,12 @@
 ## Obfuscation
 
 ```sh
-FROM python:3.9.10-slim
-ADD . /app
-WORKDIR /app
-RUN apt update -y
-RUN pip install pyarmor
-RUN pyarmor init --entry=main.py && pyarmor config --restrict=0 --manifest "global-include *.py, global-include alembic.ini, global-include *sql, global-include .env, global-include *.mako, prune .venv" && pyarmor build
+docker build -f DockerfilePyarmor . -t ctf-obfuscate
+docker run --name obfuscated-api-ctf ctf-obfuscate
+docker cp obfuscated-api-ctf:/app/dist .
+docker rm obfuscated-api-ctf
+
+docker build -f Dockerfile . -t api-ctf
+
+Docker-compose up
 ```
