@@ -28,6 +28,18 @@ async def register(
     users_repo: UsersRepository = Depends(get_repository(UsersRepository)),
     settings: AppSettings = Depends(get_app_settings),
 ) -> UserInResponse:
+    if not user_create.username or not user_create.username.strip():
+        raise HTTPException(
+            status_code=HTTP_400_BAD_REQUEST,
+            detail=strings.USERNAME_IS_NULL,
+        )
+
+    if not user_create.password:
+        raise HTTPException(
+            status_code=HTTP_400_BAD_REQUEST,
+            detail=strings.PASSWORD_IS_NULL,
+        )
+
     if await check_username_is_taken(users_repo, user_create.username):
         raise HTTPException(
             status_code=HTTP_400_BAD_REQUEST,

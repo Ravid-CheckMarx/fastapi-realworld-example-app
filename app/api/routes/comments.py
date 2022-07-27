@@ -1,6 +1,6 @@
 from typing import Optional
 
-from fastapi import APIRouter, Body, Depends, Response
+from fastapi import APIRouter, Body, Depends, Response, HTTPException
 from starlette import status
 from app.resources import strings
 from app.api.dependencies.articles import get_article_by_slug_from_path
@@ -51,6 +51,11 @@ async def create_comment_for_article(
     user: User = Depends(get_current_user_authorizer()),
     comments_repo: CommentsRepository = Depends(get_repository(CommentsRepository)),
 ) -> CommentInResponse:
+    if not comment_create.body or not comment_create.body.strip():
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=strings.COMMENT_IS_NULL,
+        )
     comment = await comments_repo.create_comment_for_article(
         body=comment_create.body,
         article=article,
