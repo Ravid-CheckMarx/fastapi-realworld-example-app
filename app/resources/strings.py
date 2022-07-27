@@ -6,6 +6,7 @@ ARTICLE_ALREADY_EXISTS = "article already exists"
 ARTICLE_TITLE_IS_NULL = "no title is provided"
 USERNAME_IS_NULL = "no username is provided"
 PASSWORD_IS_NULL = "no password is provided"
+COMMENT_IS_NULL = "no comment is provided"
 USER_IS_NOT_AUTHOR_OF_ARTICLE = "you are not an author of this article"
 
 INCORRECT_LOGIN_INPUT = "incorrect email or password"
