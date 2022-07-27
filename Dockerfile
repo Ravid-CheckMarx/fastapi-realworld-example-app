@@ -1,10 +1,9 @@
-FROM ubuntu
-RUN apt update -y
-RUN apt install -y python python3-pip
-RUN pip install uvicorn fastapi asyncpg loguru loguru aiosql bcrypt passlib pydantic[email] jwt pypika slugify pydantic[dotenv] pydantic alembic psycopg2-binary
-ADD . /app
-#ADD alembic.ini /app/app/alembic.ini
-#ADD /app/db/migrations /app/app/db/migrations
-#ADD sleep.py /app
+FROM python:3.9.10-slim
+ADD dist /app
+ADD requirements.txt /app/requirements.txt
+ADD alembic.ini /app/alembic.ini
+ADD app/db/migrations/versions app/app/db/migrations/versions
 WORKDIR /app
-CMD ["python3", "sleep.py"]
+RUN apt update -y
+RUN pip install -r requirements.txt
+CMD ["python3", "main.py"]
