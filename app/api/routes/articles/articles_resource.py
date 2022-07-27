@@ -71,6 +71,11 @@ async def create_new_article(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail=strings.ARTICLE_ALREADY_EXISTS,
         )
+    if not article_create.title or not article_create.title.strip():
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=strings.ARTICLE_TITLE_IS_NULL,
+        )
 
     article = await articles_repo.create_article(
         slug=slug,
