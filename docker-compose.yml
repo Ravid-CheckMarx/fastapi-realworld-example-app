@@ -23,8 +23,6 @@ services:
       APP_ENV: "dev"
       SECRET_KEY: "secret"
       DEBUG: "True"
-#    volumes:
-#      - ./postgres-data:/var/lib/postgresql/data:cached
   redis:
     image: appsecvillage22/ctf:redis
     ports:
