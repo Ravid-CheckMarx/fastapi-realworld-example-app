@@ -1,26 +1,33 @@
 version: '3'
-
 services:
-  app:
-    build: .
+  backend:
+    image: api-ctf
     restart: on-failure
     ports:
       - "8000:8000"
     environment:
       DATABASE_URL: "postgresql://postgres:postgres@db/postgres"
-    env_file:
-      - .env
+      APP_ENV: "dev"
+      SECRET_KEY: "secret"
+      DEBUG: "True"
     depends_on:
       - db
   db:
     image: postgres:11.5-alpine
     ports:
       - "5432:5432"
-    env_file:
-      - .env
-    volumes:
-      - ./postgres-data:/var/lib/postgresql/data:cached
+    expose:
+      - "5432"
+    environment:
+      DATABASE_URL: "postgresql://postgres:postgres@localhost/postgres"
+      APP_ENV: "dev"
+      SECRET_KEY: "secret"
+      DEBUG: "True"
   redis:
-    build: ./redis
+    image: appsecvillage22/ctf:redis
     ports:
       - "6379:6379"
+  frontend:
+    image: appsecvillage22/ctf:frontend
+    ports:
+      - "4100:4100"

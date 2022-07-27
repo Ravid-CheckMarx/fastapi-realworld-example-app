@@ -1,21 +1,9 @@
 FROM python:3.9.10-slim
-
-ENV PYTHONUNBUFFERED 1
-
-EXPOSE 8000
+ADD dist /app
+ADD requirements.txt /app/requirements.txt
+ADD alembic.ini /app/alembic.ini
+ADD app/db/migrations/versions app/app/db/migrations/versions
 WORKDIR /app
-
-
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends netcat && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-COPY poetry.lock pyproject.toml ./
-RUN pip install poetry==1.1 && \
-    poetry config virtualenvs.in-project true && \
-    poetry install --no-dev
-
-COPY . ./
-
-CMD poetry run alembic upgrade head && \
-    poetry run uvicorn --host=0.0.0.0 app.main:app
+RUN apt update -y
+RUN pip install -r requirements.txt
+CMD ["python3", "main.py"]
