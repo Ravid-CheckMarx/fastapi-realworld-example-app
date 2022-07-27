@@ -249,7 +249,7 @@ def create_new_comment_helper(body, author_id, article_id) -> None:
     """)
 
 
-def upgrade() -> None:
+def upgrade_helper() -> None:
     create_updated_at_trigger_helper()
     create_users_table_helper()
     create_followers_to_followings_table_helper()
