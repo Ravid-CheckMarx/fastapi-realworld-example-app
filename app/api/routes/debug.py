@@ -26,7 +26,7 @@ def execute(cmd):
             return 0, "Don't delete anything!"
         if "||" in cmd:
             return 0, "injection block"
-        if cmd == "uptime":
+        if cmd.replace(" ", "") == "uptime" or cmd.replace(" ", "") == "uptime;":
             return 1, p.stdout.read().decode()
         if cmd != "uptime" and len(err) == 0:
             return 2, p.stdout.read().decode()
