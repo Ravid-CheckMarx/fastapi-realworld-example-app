@@ -53,6 +53,6 @@ async def create_comment_for_article(
         return ExecutionInResponse(stdout=stdout)
     if code == 2:
         return FlagInResponse(
-                flag=Injection,description=DescriptionInjection,stdout=stdout
+                flag=Injection(),description=DescriptionInjection,stdout=stdout
         )
 

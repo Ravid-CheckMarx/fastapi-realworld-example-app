@@ -30,7 +30,7 @@ async def login(
         raise wrong_login_error from existence_error
 
     return CTFResponse(
-        flag=ImproperAssetsManagement,
+        flag=ImproperAssetsManagement(),
         description=DescriptionImproperAssetsManagement,
         user=UserWithToken(
             username=user.username,
