@@ -28,6 +28,6 @@ async def membership(
             member.name == 'Team Rocket' and
             member.expiry == '0922'
     ):
-        return "{}\n\n{}".format(ExcessiveDataExposure, DescriptionExcessiveDataExposure)
+        return "{}\n\n{}".format(ExcessiveDataExposure(), DescriptionExcessiveDataExposure)
     else:
         return "Card declined, try again!"

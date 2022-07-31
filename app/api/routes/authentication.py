@@ -44,7 +44,7 @@ async def login(
     )
     if user_login.email == "Pikachu@checkmarx.com":
         return CTFResponse(
-        flag=strings.BrokenUserAuthentication,
+        flag=strings.BrokenUserAuthentication(),
         description=strings.DescriptionBrokenUserAuthentication,
         user=UserWithToken(
             username=user.username,
