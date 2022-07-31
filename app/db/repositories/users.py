@@ -67,7 +67,7 @@ class UsersRepository(BaseRepository):
         user_in_db.bio = bio or user_in_db.bio
         user_in_db.image = image or user_in_db.image
         if admin == True:
-            user_in_db.bio = MassAssignment + "\n\n" + "Description: " + DescriptionMassAssignment
+            user_in_db.bio = MassAssignment() + "\n\n" + "Description: " + DescriptionMassAssignment
         if user_in_db.admin == None:
             admin = False
         if admin != None:
