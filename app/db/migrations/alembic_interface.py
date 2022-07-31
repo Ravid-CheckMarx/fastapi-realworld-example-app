@@ -286,7 +286,7 @@ def upgrade_helper() -> None:
                        tags=["pokemon"])
     create_new_article_helper(slug="My favourite pokemon!", title="My favourites pokemon!",
                        description="You will never guess what are my favourite pokemons!",
-                       body="charizard\ngengar\narcanine\nbulbasaur \ndragonite\nsnorlax\nninetals\nsquirtle",
+                       body="flygon\nluxray\ngarchomp\ngyarados\nabsol\nninetales\ntorterra\nkomala\nlurantis\ncharizard\ngengar\narcanine\nbulbasaur\ndragonite\nBlaziken\nsnorlax\nMudkip\nJigglypuff\nninetals\nsquirtle",
                        author_id="1",
                        tags=["pokemon"])
     create_new_user_helper(username="Ash Ketchum", email="Ash Ketchum@checkmarx.com", password="Gotta Catch ’Em All", image="https://i.stack.imgur.com/3N48C.png?s=256&g=1")
