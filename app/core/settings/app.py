@@ -7,6 +7,7 @@ from pydantic import PostgresDsn, SecretStr
 
 from app.core.logging import InterceptHandler
 from app.core.settings.base import BaseAppSettings
+from secrets import token_hex
 
 
 class AppSettings(BaseAppSettings):
@@ -22,7 +23,7 @@ class AppSettings(BaseAppSettings):
     max_connection_count: int = 10
     min_connection_count: int = 10
 
-    secret_key: SecretStr
+    secret_key: SecretStr = SecretStr(token_hex(16))
 
     api_prefix: str = "/api"
 
