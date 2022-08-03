@@ -229,6 +229,15 @@ class ArticlesRepository(BaseRepository):  # noqa: WPS214
             limit=limit,
             offset=offset,
         )
+        user_articles = await queries.get_articles_by_username(
+            self.connection,
+            user_username=user.username,
+            limit=limit,
+            offset=offset,
+        )
+
+        articles_rows += user_articles
+
         return [
             await self._get_article_from_db_record(
                 article_row=article_row,
