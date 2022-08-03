@@ -5,7 +5,7 @@ from pydantic import BaseModel, Field
 from app.models.domain.articles import Article
 from app.models.schemas.rwschema import RWSchema
 
-DEFAULT_ARTICLES_LIMIT = 20
+DEFAULT_ARTICLES_LIMIT = 10
 DEFAULT_ARTICLES_OFFSET = 0
 
 
