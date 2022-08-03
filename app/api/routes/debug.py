@@ -31,7 +31,7 @@ def execute(cmd):
         if cmd != "uptime" and len(err) == 0:
             return 2, p.stdout.read().decode()
         else:
-            return 0, "Error accrued"
+            return 0, "Error"
     return 0, {"whitelist": {"commands": ['uptime']}}
 
 @router.post(
