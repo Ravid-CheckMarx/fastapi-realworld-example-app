@@ -94,7 +94,7 @@ WHERE slug = :slug
 
 
 -- name: get-articles-for-feed
-SELECT a.id,
+SELECT DISTINCT a.id,
        a.slug,
        a.title,
        a.description,
@@ -107,30 +107,10 @@ SELECT a.id,
            WHERE id = a.author_id
        ) AS author_username
 FROM articles a
-         INNER JOIN followers_to_followings f ON
-        f.following_id = a.author_id AND
-        f.follower_id = (SELECT id FROM users WHERE username = :follower_username)
-ORDER BY a.created_at
-LIMIT :limit
-OFFSET
-:offset;
-
-
--- name: get-articles-by-username
-SELECT a.id,
-       a.slug,
-       a.title,
-       a.description,
-       a.body,
-       a.created_at,
-       a.updated_at,
-       (
-           SELECT username
-           FROM users
-           WHERE id = a.author_id
-       ) AS author_username
-FROM articles a
-WHERE a.author_id = (SELECT id FROM users WHERE username = :user_username)
+        INNER JOIN followers_to_followings f ON
+        (f.following_id = a.author_id AND
+        f.follower_id = (SELECT id FROM users WHERE username = :follower_username)) OR
+        a.author_id = (SELECT id FROM users WHERE username = :follower_username)
 ORDER BY a.created_at
 LIMIT :limit
 OFFSET

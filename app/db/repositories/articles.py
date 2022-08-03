@@ -106,7 +106,7 @@ class ArticlesRepository(BaseRepository):  # noqa: WPS214
         tag: Optional[str] = None,
         author: Optional[str] = None,
         favorited: Optional[str] = None,
-        limit: int = 20,
+        limit: int = 10,
         offset: int = 0,
         requested_user: Optional[User] = None,
     ) -> List[Article]:
@@ -220,7 +220,7 @@ class ArticlesRepository(BaseRepository):  # noqa: WPS214
         self,
         *,
         user: User,
-        limit: int = 20,
+        limit: int = 10,
         offset: int = 0,
     ) -> List[Article]:
         articles_rows = await queries.get_articles_for_feed(
@@ -229,14 +229,6 @@ class ArticlesRepository(BaseRepository):  # noqa: WPS214
             limit=limit,
             offset=offset,
         )
-        user_articles = await queries.get_articles_by_username(
-            self.connection,
-            user_username=user.username,
-            limit=limit,
-            offset=offset,
-        )
-
-        articles_rows += user_articles
 
         return [
             await self._get_article_from_db_record(
