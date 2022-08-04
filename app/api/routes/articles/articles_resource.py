@@ -50,7 +50,10 @@ async def list_articles(
     ]
     return ListOfArticlesInResponse(
         articles=articles_for_response,
-        articles_count=len(articles),
+        articles_count=await articles_repo.get_articles_count(
+        tag=articles_filters.tag,
+        author=articles_filters.author,
+        favorited=articles_filters.favorited),#len(articles)
     )
 
 

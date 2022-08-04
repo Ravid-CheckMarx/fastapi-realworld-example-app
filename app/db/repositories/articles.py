@@ -1,7 +1,7 @@
 from typing import List, Optional, Sequence, Union
 
 from asyncpg import Connection, Record
-from pypika import Query
+from pypika import Query, functions
 
 from app.db.errors import EntityDoesNotExist
 from app.db.queries.queries import queries
@@ -106,7 +106,7 @@ class ArticlesRepository(BaseRepository):  # noqa: WPS214
         tag: Optional[str] = None,
         author: Optional[str] = None,
         favorited: Optional[str] = None,
-        limit: int = 20,
+        limit: int = 10,
         offset: int = 0,
         requested_user: Optional[User] = None,
     ) -> List[Article]:
@@ -216,11 +216,105 @@ class ArticlesRepository(BaseRepository):  # noqa: WPS214
             for article_row in articles_rows
         ]
 
+    async def get_articles_count(  # noqa: WPS211
+        self,
+        *,
+        tag: Optional[str] = None,
+        author: Optional[str] = None,
+        favorited: Optional[str] = None,
+        limit: int = 10,
+        offset: int = 0,
+        requested_user: Optional[User] = None,
+    ) -> int:
+        query_params: List[Union[str, int]] = []
+        query_params_count = 0
+
+        # fmt: off
+        query = Query.from_(
+            articles,
+        ).select(
+            functions.Count('*')
+        )
+        # fmt: on
+
+        if tag:
+            query_params.append(tag)
+            query_params_count += 1
+
+            # fmt: off
+            query = query.join(
+                articles_to_tags,
+            ).on(
+                (articles.id == articles_to_tags.article_id) & (
+                    articles_to_tags.tag == Query.from_(
+                        tags_table,
+                    ).where(
+                        tags_table.tag == Parameter(query_params_count),
+                    ).select(
+                        tags_table.tag,
+                    )
+                ),
+            )
+            # fmt: on
+
+        if author:
+            query_params.append(author)
+            query_params_count += 1
+
+            # fmt: off
+            query = query.join(
+                users,
+            ).on(
+                (articles.author_id == users.id) & (
+                    users.id == Query.from_(
+                        users,
+                    ).where(
+                        users.username == Parameter(query_params_count),
+                    ).select(
+                        users.id,
+                    )
+                ),
+            )
+            # fmt: on
+
+        if favorited:
+            query_params.append(favorited)
+            query_params_count += 1
+
+            # fmt: off
+            query = query.join(
+                favorites,
+            ).on(
+                (articles.id == favorites.article_id) & (
+                    favorites.user_id == Query.from_(
+                        users,
+                    ).where(
+                        users.username == Parameter(query_params_count),
+                    ).select(
+                        users.id,
+                    )
+                ),
+            )
+
+        articles_count = await self.connection.fetch(query.get_sql(), *query_params)
+        return articles_count[0][0]
+
+    async def get_articles_for_user_feed_count(
+        self,
+        user: User
+    ) -> int:
+        articles_num = await queries.get_articles_for_feed_count(
+            self.connection,
+            username=user.username,
+        )
+
+        return articles_num[0][0]
+
     async def get_articles_for_user_feed(
         self,
         *,
         user: User,
-        limit: int = 20,
+        limit: int = 10,
         offset: int = 0,
     ) -> List[Article]:
         articles_rows = await queries.get_articles_for_feed(
@@ -229,6 +323,7 @@ class ArticlesRepository(BaseRepository):  # noqa: WPS214
             limit=limit,
             offset=offset,
         )
+
         return [
             await self._get_article_from_db_record(
                 article_row=article_row,

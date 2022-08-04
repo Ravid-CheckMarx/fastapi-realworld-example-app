@@ -40,7 +40,7 @@ async def get_articles_for_user_feed(
     ]
     return ListOfArticlesInResponse(
         articles=articles_for_response,
-        articles_count=len(articles),
+        articles_count=await articles_repo.get_articles_for_user_feed_count(user=user),
     )
 
 
